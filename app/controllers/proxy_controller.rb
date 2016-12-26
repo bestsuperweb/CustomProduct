@@ -1,7 +1,7 @@
 # proxy
 @data = File.read("#{Rails.root}/app/assets/javascripts/custom-product-builder.js")
 
-class ProxyController < ApplicationController
+class ProxyController < ShopifyApp::ApplicationController
 
   def index
     puts "PROXY REQUEST"
@@ -9,11 +9,8 @@ class ProxyController < ApplicationController
   end
 
   def client
-    # shop_url = "https://#{ShopifyApp.configuration.api_key}:#{ShopifyApp.configuration.secret}pbbt.myshopify.com/admin"
+    # shop_url = "https://#{ShopifyApp.configuration.api_key}:#{ShopifyApp.configuration.secret}@SHOP_NAME.myshopify.com/admin"
     # ShopifyAPI::Base.site = shop_url
-    ShopifyAPI::Session.setup({:api_key => ShopifyApp.configuration.api_key, :secret => ShopifyApp.configuration.secret})
-    session = ShopifyAPI::Session.new("pbbt.myshopify.com")
-    ShopifyAPI::Base.activate_session(session)
     @id = params[:product_id]
     puts ">>>>>>> customizer"
     product = ShopifyAPI::Product.find(@id.to_i)
