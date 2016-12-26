@@ -14,7 +14,6 @@ class ProxyController < ApplicationController
     ShopifyAPI::Session.setup({:api_key => ShopifyApp.configuration.api_key, :secret => ShopifyApp.configuration.secret})
     session = ShopifyAPI::Session.new("pbbt.myshopify.com")
     ShopifyAPI::Base.activate_session(session)
-    shop = ShopifyAPI::Shop.current
     @id = params[:product_id]
     puts ">>>>>>> customizer"
     product = ShopifyAPI::Product.find(@id.to_i)
