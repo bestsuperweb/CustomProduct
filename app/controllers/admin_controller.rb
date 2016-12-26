@@ -1,6 +1,5 @@
 class AdminController < ShopifyApp::AuthenticatedController
-  include ShopifyApp::LoginProtection
-  
+
   def index
 
   end
