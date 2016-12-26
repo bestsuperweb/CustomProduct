@@ -9,9 +9,9 @@ class ProxyController < ApplicationController
   end
 
   def client
-    # @id = params[:product_id]
+    @id = params[:product_id]
     puts ">>>>>>> customizer"
-    product = ShopifyAPI::Product.find(params[:product_id])
+    product = ShopifyAPI::Product.find(@id.to_i)
     product_id = product.id
 
     panels = ShopifyAPI::Metafield.find(:all, :params => {:resource => "products", :resource_id => product_id, :namespace => "customizer_panels", :order => "created_at ASC"})
