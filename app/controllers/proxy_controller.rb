@@ -9,9 +9,9 @@ class ProxyController < ApplicationController
   end
 
   def client
-    @id = params[:product_id]
+    # @id = params[:product_id]
     puts ">>>>>>> customizer"
-    product = ShopifyAPI::Product.find(@id)
+    product = ShopifyAPI::Product.find(params[:product_id])
     product_id = product.id
 
     panels = ShopifyAPI::Metafield.find(:all, :params => {:resource => "products", :resource_id => product_id, :namespace => "customizer_panels", :order => "created_at ASC"})
@@ -55,7 +55,7 @@ class ProxyController < ApplicationController
     end
 
     @customizer_config = {
-        isAdmin: false,
+        isAdmin: true,
         cdnPath: Rails.application.config.assets.cdn_path,
         apiPrefix: Rails.application.config.assets.api_prefix,
         apiAuthentication: {
