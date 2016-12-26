@@ -9,8 +9,10 @@ class ProxyController < ApplicationController
   end
 
   def client
-    shop_url = "https://#{ShopifyApp.configuration.api_key}:#{ShopifyApp.configuration.secret}pbbt.myshopify.com/admin"
-    ShopifyAPI::Base.site = shop_url
+    # shop_url = "https://#{ShopifyApp.configuration.api_key}:#{ShopifyApp.configuration.secret}pbbt.myshopify.com/admin"
+    # ShopifyAPI::Base.site = shop_url
+
+    ShopifyAPI::Session.setup({:api_key => ShopifyApp.configuration.api_key, :secret => ShopifyApp.configuration.secret})
     @id = params[:product_id]
     puts ">>>>>>> customizer"
     product = ShopifyAPI::Product.find(@id.to_i)
