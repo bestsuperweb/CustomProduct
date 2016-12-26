@@ -75,7 +75,7 @@ class ProxyController < ShopifyApp::AuthenticatedController
     end
 
     @customizer_config = {
-        isAdmin: true,
+        isAdmin: false,
         cdnPath: Rails.application.config.assets.cdn_path,
         apiPrefix: Rails.application.config.assets.api_prefix,
         apiAuthentication: {
