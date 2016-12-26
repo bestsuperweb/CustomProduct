@@ -1,7 +1,7 @@
 Rails.application.configure do
 
-  config.app_path = 'https://shopifycustomizer.herokuapp.com/'
-  config.assets.cdn_path = 'https://shopifycustomizer.herokuapp.com/dist/'
+  config.app_path = 'https://shopifyrails123.herokuapp.com/'
+  config.assets.cdn_path = 'https://shopifyrails123.herokuapp.com/dist/'
   config.assets.api_prefix = '/api/'
 
   # config.app_path = 'http://localhost:3000'
