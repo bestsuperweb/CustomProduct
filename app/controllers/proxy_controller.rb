@@ -3,7 +3,7 @@
 
 class ProxyController < ShopifyApp::AuthenticatedController
   # include ShopifyApp::AppProxyVerification
-  # skip_before_action :verify_authenticity_token, raise: false
+  skip_before_action :verify_authenticity_token, raise: false
   def index
     puts "PROXY REQUEST"
     puts params
