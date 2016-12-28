@@ -2,7 +2,7 @@
 @data = File.read("#{Rails.root}/app/assets/javascripts/custom-product-builder.js")
 
 class ProxyController < ShopifyApp::AuthenticatedController
-
+  include ShopifyApp::AppProxyVerification
   def index
     puts "PROXY REQUEST"
     puts params
