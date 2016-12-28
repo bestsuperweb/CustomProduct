@@ -2,7 +2,7 @@
 @data = File.read("#{Rails.root}/app/assets/javascripts/custom-product-builder.js")
 
 class ProxyController < ShopifyApp::AuthenticatedController
-  # include ShopifyApp::AppProxyVerification
+  include ShopifyApp::AppProxyVerification
   # skip_before_action :verify_authenticity_token, raise: false
   def index
     puts "PROXY REQUEST"
