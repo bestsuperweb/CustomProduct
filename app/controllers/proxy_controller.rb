@@ -4,12 +4,15 @@
 class ProxyController < ApplicationController
   # include ShopifyApp::AppProxyVerification
   # skip_before_action :verify_authenticity_token, raise: false
+  include ShopifyApp::Controller
+
   def index
     puts "PROXY REQUEST"
     puts params
   end
 
   def client
+
     @id = params[:product_id]
     puts ">>>>>>> customizer"
     product = ShopifyAPI::Product.find(@id.to_i)
