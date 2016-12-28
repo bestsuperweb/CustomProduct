@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   put 'proxy' => 'proxy#index'
   delete 'proxy' => 'proxy#index'
 
-  get 'client/client.js/:product_id' => 'proxy#client'
+  get 'client/client.js' => 'proxy#client'
 
   get 'customizer' => 'admin#customizer'
 
