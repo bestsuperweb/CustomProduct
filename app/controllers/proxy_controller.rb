@@ -2,14 +2,17 @@
 @data = File.read("#{Rails.root}/app/assets/javascripts/custom-product-builder.js")
 
 class ProxyController < ApplicationController
-  
+  around_filter :shopify_session
   def index
     puts "PROXY REQUEST"
     puts params
   end
 
   def client
-
+    tmp_shop = Shop.where(shopify_domain: params[:shop]).first
+    shop_sess = ShopifyAPI::Session.new(params[:shop], tmp_shop.shopify_token)
+    ShopifyAPI::Base.activate_session(shop_sess)
+    session[:session_shopify] = shop_sess
     @id = params[:product_id]
     puts ">>>>>>> customizer"
     product = ShopifyAPI::Product.find(@id.to_i)
